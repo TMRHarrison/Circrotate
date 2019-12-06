@@ -1,0 +1,13 @@
+# You can use this file to create a conda environment for this pipeline:
+#   conda env create -f environment.yml
+name: Circrotate-v1.0.0
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - nextflow=19.10.0
+  - python=3.7
+  - prokka=1.14.0
+  - bcbiogff=0.6.6
+  - biopython=1.74
