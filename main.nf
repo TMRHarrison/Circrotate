@@ -1,12 +1,14 @@
 #!/usr/bin/env nextflow
 
-
-
 def helpMessage() {
   c_reset = params.monochrome ? '' : "\033[0m";
   c_dim = params.monochrome ? '' : "\033[2m";
 
   log.info"\n"+"""
+  Circ${c_dim}ovirus${c_reset}
+  Rotate
+  v1.1.0
+
   Usage:
 
   The typical command for running the pipeline is as follows:
@@ -21,16 +23,28 @@ def helpMessage() {
     --motif                   A JASPAR sites file with replication origins.
     --prokkaOpts              Extra prokka options. Must be wrapped in quotes.
     --seqBatch                Number of sequences to process per thread.
+    --genBank                 Switch for using genbank file(s) with --in.
+
+  Debug/misc:
+    --help                    Show this message.
   """.stripIndent()
 }
 
 params.in = null
-params.motif = "${workflow.projectDir}/testData/rep_orig_circo.sites"
 params.out = "pipe_out"
-params.help = null
+params.motif = "${workflow.projectDir}/testData/rep_orig_circo.sites"
 params.prokkaOpts = ""
 params.seqBatch = 1
+params.genBank = false
+
+params.help = null
 params.monochrome = false
+
+// Show help message
+if (params.help) {
+  helpMessage()
+  exit 0
+}
 
 def summary = [:]
 if (workflow.revision)
@@ -39,6 +53,7 @@ summary['Run Name']           = workflow.runName
 if (workflow.containerEngine)
   summary['Container']        = "$workflow.containerEngine - $workflow.container"
 summary['FASTA input']        = params.in
+summary['GenBank file?']      = params.genBank
 if (params.prokkaOpts)
   summary['Prokka options:']  = params.prokkaOpts
 summary['Seqs per Thread:']   = params.seqBatch
@@ -49,31 +64,50 @@ summary['Script dir']         = workflow.projectDir
 summary['User']               = workflow.userName
 log.info summary.collect { k,v -> "${k.padRight(18)}: $v" }.join("\n")
 
-// Show help message
-if (params.help) {
-  helpMessage()
-  exit 0
-}
-
-
 if (params.in == null) {
   log.info"You must specify an input FASTA file with \"--in <file>\"."
   exit 1
 }
 
+motif_vch = Channel.value(file(params.motif))
 
-// Split the sequences into their own processes.
-sequences_ch = Channel.fromPath(params.in)
-          .splitFasta(by: params.seqBatch, file: true)
-          .dump()
-motif_ch = Channel.fromPath(params.motif)
+genBank_vch = params.genBank ? Channel.value(file(params.in)) : Channel.value(false)
+
+if (params.genBank) {
+  log.info"Genbank file in use"
+   genBankIn_ch = Channel.fromPath(params.in)
+   fastaSequences_ch = Channel.empty()
+}
+else {
+  fastaSequences_ch = Channel.fromPath(params.in)
+  genBankIn_ch = Channel.empty()
+}
+
+// if there is a genbank file, make it into fasta files and pass it to giveFileNameFastaID
+// Otherwise, the input should be fasta and sent straight to giveFileNameFastaID
+process makeFasta {
+  input:
+  file inp from genBankIn_ch // <--- --in file when --genbank specified 
+
+  output:
+  file "${inp.baseName}.fasta" into gbFastaSequences_ch // ---> giveFileNameFastaID
+
+  when:
+  params.genBank
+
+  script:
+  """
+  gb2fasta.py ${inp} ${inp.baseName}.fasta
+  """
+}
 
 // appends the sequence ID to the filename. Only takes the ID up until the first non-alphanumeric character that isn't '.', '_', or '-'.
 // This behaviour is to prevent illegal filenames.
 // The rest of the filename is maintained to ensure the output won't have any overlapping names.
 process giveFileNameFastaID {
   input:
-  file inp from sequences_ch// <--- --in
+  file inp from fastaSequences_ch.mix(gbFastaSequences_ch).collect().splitFasta(by: params.seqBatch, file: true) // <--- --in for fasta files, makeFasta for genbank files
+  // mixing the channels allows one or the other to be optional
 
   output:
   file "*_${inp}" into renamedSequences_ch // ---> performProkka
@@ -117,6 +151,8 @@ process rotateSeqs {
 
   input:
   file inp from annotatedSeqs_ch // <--- performProkka
+  file motifs from motif_vch // <--- --motif
+  file gbinp from genBank_vch // <--- --in iff params.genbank is set
 
   output:
   file "*.fasta" into combineFastas_ch // ---> combineControlSeqs
@@ -125,9 +161,10 @@ process rotateSeqs {
 
   script:
   pref = "${inp.baseName}_rotated"
+  gb = gbinp ? "--genbank ${gbinp}" : ""
 
   """
-  rotate_seq.py --input ${inp} --output ${pref} --motif ${params.motif}
+  rotate_seq.py --input ${inp} --output ${pref} --motif ${motifs} ${gb}
   """
 }
 
@@ -136,16 +173,24 @@ process combineFastas {
   publishDir "${params.out}/sequences", mode: 'copy'
 
   input:
-  file "*.fasta" from combineFastas_ch.collect() // <--- rotateSeqs
+  file "f*.fasta" from combineFastas_ch.collect() // <--- rotateSeqs
 
   output:
   file "all_sequences.fasta" into combinedFastas_ch // ---> combineFastaGff
 
-  // strip all the blank lines
-  // if none are found, suppress the error exit code by piping through cat
-  // It doesn't like doing it in one stream from multiple files, so it concatenates to a single file first.
-  // This way does take more disk space and time but also for some reason it would hang 
-  // at 0% memory usage and just fill the work/ folder with massive (>100GB) files otherwise
+  /* strip all the blank lines
+  if none are found, suppress the error exit code by piping through cat
+  It doesn't like doing it in one stream from multiple files, so it concatenates to a single file first.
+  This way does take more disk space and time but also for some reason it would hang 
+  at 0% memory usage and just fill the work/ folder with massive (>100GB) files otherwise
+  
+  Hey, I found more weirdness: .collect() will give files sequential names to globs (1.fa, 2.fa, 3.fa, etc.)
+  But only if there are multiple files in the queue. If there is one file, the glob gets removed completely.
+  So if this is "*.fasta", the single collected file is ".fasta" which is a hidden file. Which cat can't find.
+  So I have to call it f*.fasta so it goes to [f1.fasta, f2.fasta, ...] or "f.fasta"
+
+  I guess it makes sense to do it like that, but it would have been nice if it said this was anywhere in the docs :^)
+  */
   """
   cat *.fasta > tmp.f
   grep -v "^\$" tmp.f | cat - > all_sequences.fasta
@@ -157,7 +202,7 @@ process combineFails {
   publishDir "${params.out}/sequences", mode: 'copy'
 
   input:
-  file "*.txt" from combineFails_ch.collect() // <--- rotateSeqs
+  file "t*.txt" from combineFails_ch.collect() // <--- rotateSeqs
 
   output:
   file "all_fails.txt"
@@ -174,7 +219,7 @@ process combineAnnotations {
   publishDir "${params.out}/sequences", mode: 'copy'
 
   input:
-  file "*.gff" from combineAnnotations_ch.collect() // <--- rotateSeqs
+  file "g*.gff" from combineAnnotations_ch.collect() // <--- rotateSeqs
 
   output:
   file "all_annotations.gff" into combinedAnnotations_ch // ---> combineFastaGff

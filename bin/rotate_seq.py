@@ -19,8 +19,9 @@ The general process is as follows:
 # command line arguments, GFF parser
 import argparse
 from BCBio import GFF
-from Bio import motifs
+from Bio import motifs, SeqIO
 from Bio.Seq import Seq
+from Bio.SeqFeature import SeqFeature, FeatureLocation
 
 # Type hinting
 from typing import TYPE_CHECKING, Dict, Tuple, Iterable, List, Optional
@@ -42,6 +43,7 @@ def get_params():
     parser.add_argument("--motif", help="The JASPAR sites file of possible replication origins.")
     parser.add_argument("--output", help="The prefix for the output files")
     parser.add_argument("--force", action="store_true", help="Overwrites the output if it already exists.")
+    parser.add_argument("--genbank", help="optional genbank annotation file. Overrides the prokka annotations when exporting.")
 
     return parser.parse_args()
 
@@ -170,14 +172,17 @@ def main():
     """Main CLI entry point for rotate_seq.py"""
     args = get_params()
 
-    # make a new file, either forcing overwrite of the old file or not, depending on the setting.
-    with open(args.input, "r") as gff_file, \
-            open(args.motif, "r") as motif_file, \
-            open(args.output+"-seqs.fasta", "w" if args.force else "x") as seqout_file, \
-            open(args.output+"-annotations.gff", "w" if args.force else "x") as gffout_file, \
-            open(args.output+"-fails.txt", "w" if args.force else "x") as fail_file:
+    rec_succ = []
+    rec_fail = []
 
-        # highest to lowest priority, e.x. rep is preferred over cap
+    # read the input files
+    with open(args.input, "r") as gff_file, \
+            open(args.motif, "r") as motif_file:
+        
+        # if the genbank file is given, load it in as an index, otherwise, give an empty dict
+        gb_ind = SeqIO.index(args.genbank, "genbank") if args.genbank else {}
+
+        # highest to lowest priority, e.x. cap is preferred over rep
         # [0] product name
         # [1] start or end of gene
         # [2] 
@@ -195,9 +200,6 @@ def main():
         ]
 
         motif = motifs.read(motif_file, "sites")
-
-        rec_succ = []
-        rec_fail = []
 
         for rec in GFF.parse(gff_file):
             cur_rec = rec
@@ -223,20 +225,49 @@ def main():
             # get the position of the anchor
             cur_anchor_pos = get_anchor_pos(anchor_spec, anchor_annot)
             
+            # if there is a sequence with the corect id, pull it from the genbank list, otherwise, just keep using the prokka annotations.
+            cur_rec = gb_ind.get(cur_rec.id, cur_rec)
+
             # find rep origin(s) from list
             posses = get_positions(cur_rec, cur_motif)
 
             # rotate to location of origin closest to the anchor point
             out_rec = rotate_seq(cur_rec, posses, cur_anchor_pos, rcomp, motif)
-            
+
             if not (out_rec is None):
+                # just pop in a couple extra things:
+                # sequence is circular (otherwise, you can't rotate it)
+
+                out_rec.features.append(
+                    SeqFeature(
+                        FeatureLocation(0,len(out_rec)),
+                        type="region",
+                        strand=1,
+                        qualifiers={"Is_circular": 1}
+                    )
+                )
+                if "source" in out_rec.annotations:
+                    out_rec.features.append(
+                        SeqFeature(
+                            FeatureLocation(0,len(out_rec)),
+                            type="source",
+                            strand=1,
+                            qualifiers={"Name": out_rec.annotations["source"]}
+                        )
+                    )
+
                 rec_succ.append(out_rec)
             else:
                 rec_fail.append(rec)
 
+    # make a new file, either forcing overwrite of the old file or not, depending on the setting.
+    with open(args.output+"-seqs.fasta", "w" if args.force else "x") as seqout_file, \
+            open(args.output+"-annotations.gff", "w" if args.force else "x") as gffout_file, \
+            open(args.output+"-fails.txt", "w" if args.force else "x") as fail_file:
+
         GFF.write(rec_succ, gffout_file)
-        
-        seqout_file.write("\n".join([">"+r.id+"\n"+str(r.seq) for r in rec_succ])+"\n")
+
+        SeqIO.write(rec_succ, seqout_file, "fasta")
 
         fail_file.write("\n".join([r.id for r in rec_fail])+"\n")
 
