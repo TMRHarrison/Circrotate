@@ -55,6 +55,8 @@ nextflow run Circrotate --in Circrotate/testData/circo.gb --genbank
 ```
 This command can be run by using ```-profile testgb```.
 
+All sequences in both test sets should be rotated to the replication origin.
+
 ## Notes:
 The program tries to use the start of the rep or cap gene as an anchor for the expected replication origin, in case there is a siimlar sequence elsewhere in the genome. However, this is not perfect, and the following errors can occur:
 

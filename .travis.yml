@@ -1,0 +1,41 @@
+sudo: required
+language: python
+jdk: openjdk8
+services: docker
+python: '3.6' # big meme: I only need this to install Conda, then I use 3.7 in the actual environment
+cache: pip
+matrix:
+  fast_finish: true
+
+before_install:
+  # PRs to master are only ok if coming from dev branch
+  - '[ $TRAVIS_PULL_REQUEST = "false" ] || [ $TRAVIS_BRANCH != "master" ] || ([ $TRAVIS_PULL_REQUEST_SLUG = $TRAVIS_REPO_SLUG ] && [ $TRAVIS_PULL_REQUEST_BRANCH = "dev" ])'
+
+install:
+  # Install Nextflow
+  - mkdir /tmp/nextflow && cd /tmp/nextflow
+  - wget -qO- get.nextflow.io | bash
+  - sudo ln -s /tmp/nextflow/nextflow /usr/local/bin/nextflow
+  # Reset
+  - mkdir ${TRAVIS_BUILD_DIR}/tests && cd ${TRAVIS_BUILD_DIR}/tests
+  # Conda
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  # Useful for debugging any issues with conda
+  - conda info -a
+  # Make the actual environment
+  - conda env create -q --name Circrotate -f ../environment.yml
+  - source activate Circrotate
+
+env:
+  - NXF_VER='19.07.0' # Specify a minimum NF version that should be tested and work
+  - NXF_VER='' # Plus: get the latest NF version and check that it works
+
+script:
+  # Run the pipeline with the test profile
+  - nextflow run ${TRAVIS_BUILD_DIR} -profile test --output fasta_test
+  - nextflow run ${TRAVIS_BUILD_DIR} -profile testgb --output genbank_test

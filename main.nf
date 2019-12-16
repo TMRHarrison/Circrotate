@@ -156,8 +156,9 @@ process rotateSeqs {
 
   output:
   file "*.fasta" into combineFastas_ch // ---> combineControlSeqs
-  file "*.txt" into combineFails_ch // ---> combineFails
+  file "*.txt" optional true into combineFails_ch // ---> combineFails
   file "*.gff" into combineAnnotations_ch // ---> combineAnnotations
+  file "*.csv" into combineCsv_ch // ---> combineAnnotations
 
   script:
   pref = "${inp.baseName}_rotated"
@@ -227,7 +228,26 @@ process combineAnnotations {
   // strip the headers and place a single gff header in the final file.
   """
   cat *.gff > tmp.g
-  (echo "##gff-version 3" ; grep -v "^##gff-" tmp.g ) > all_annotations.gff
+  HEADER=\$(head -n1 tmp.g)
+  (echo \${HEADER} ; grep -v "^\${HEADER}" tmp.g ) > all_annotations.gff
+  """
+}
+
+// concatenates the csv results into a single file
+process combineResults {
+  publishDir "${params.out}/sequences", mode: 'copy'
+
+  input:
+  file "c*.csv" from combineCsv_ch.collect() // <--- rotateSeqs
+
+  output:
+  file "all_results.csv"
+
+  // strip the headers and place a single csv header in the final file.
+  """
+  cat *.csv > tmp.c
+  HEADER=\$(head -n1 tmp.c)
+  (echo \${HEADER} ; grep -v "^\${HEADER}" tmp.c ) > all_results.csv
   """
 }
 
