@@ -106,7 +106,7 @@ process makeFasta {
 // The rest of the filename is maintained to ensure the output won't have any overlapping names.
 process giveFileNameFastaID {
   input:
-  file inp from fastaSequences_ch.mix(gbFastaSequences_ch).collect().splitFasta(by: params.seqBatch, file: true) // <--- --in for fasta files, makeFasta for genbank files
+  file inp from fastaSequences_ch.mix(gbFastaSequences_ch).splitFasta(by: params.seqBatch, file: true) // <--- --in for fasta files, makeFasta for genbank files
   // mixing the channels allows one or the other to be optional
 
   output:
@@ -133,11 +133,22 @@ process performProkka {
 
   output:
   file "**/*.gff" into annotatedSeqs_ch // ---> rotateSeq
-  file("**/*")
+  file "*${sed_pat_fn}" into seqDescs_ch // ---> rotateSeq
+  file "**/*"
+
+  script:
+  sed_pat_fn = "${inp.baseName}-sedpat.txt"
 
   """
   prokka --outdir prokka-out --force --prefix ${inp.baseName} --cpus ${task.cpus} --gcode 1 --kingdom virus ${inp} ${params.prokkaOpts}
+
+  awk -F" " -e '/^>/ {st = index(\$0," ") ; print "s>^\\\\(\\\\"\$1".*\\\\)>\\\\1 "substr(\$0,st+1)">"}' ${inp} > ${sed_pat_fn}
   """
+  // The awk command constructs a sed pattern, each of the \\\\ escapes to one \ in the final sed (escape once for nextflow, again for bash
+  // "s>^\(\"\$1"\)>\1 "substr(\$0,st+1)">"
+  // s>^(\>seqID)>\1 seqDesc>
+  // Basically replace the fasta header with just the ID with the entire description
+  // It uses > as the delimiter because it usually doesn't appear in fasta headers except the start character.
 }
 
 // rotates the sequences to the correct nucleotide motif
@@ -151,6 +162,7 @@ process rotateSeqs {
 
   input:
   file inp from annotatedSeqs_ch // <--- performProkka
+  file sedPat from seqDescs_ch // <--- performProkka
   file motifs from motif_vch // <--- --motif
   file gbinp from genBank_vch // <--- --in iff params.genbank is set
 
@@ -166,6 +178,7 @@ process rotateSeqs {
 
   """
   rotate_seq.py --input ${inp} --output ${pref} --motif ${motifs} ${gb}
+  sed -i -f ${sedPat} *.fasta
   """
 }
 

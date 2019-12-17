@@ -277,6 +277,8 @@ def main():
             if not (out_rec is None):
                 # just pop in a couple extra things:
 
+                gbk_found = out_rec.id in gb_ind
+
                 # sequence is circular
                 out_rec.features.append(
                     SeqFeature(
@@ -298,13 +300,19 @@ def main():
                         )
                     )
 
+                # The description gets put back on at the end by sed, so this clears the field here so it doesn't get printed twice.
+                out_rec.description = ""
+
+                # add some information to the ID so it doesn't get lost
+                out_rec.id += "_("+str(shift_offset+1)+".."+str(len(out_rec))+")_(1.."+str(shift_offset)+")"
+
                 # put the successful record into the table to get printed out later
                 rec_succ.append(
                     {
                         "rec": out_rec,
                         "shift": shift_offset,
                         "rev_comp": rcomp,
-                        "genbank": cur_rec.id in gb_ind,
+                        "genbank": gbk_found,
                         "posses": posses
                     }
                 )
