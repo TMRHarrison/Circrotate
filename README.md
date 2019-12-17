@@ -27,6 +27,8 @@ Recommended versions of these dependencies are in the ```environment.yml``` file
 * (named output)/
 	* prokka-annotations/
 		* One folder for each annotation format, each containing annotation files for each batch of processed sequences.
+		* spf/
+			* folder containing the sed patterns later used to restore the fasta descriptions to the output files.
 	* sequences/
 		* fasta/ organized by batch
 			* the fasta files of the rotated sequences.
@@ -37,7 +39,18 @@ Recommended versions of these dependencies are in the ```environment.yml``` file
 		* "all_sequences.fasta" contains all the rotated sequences in one fasta file.
 		* "all_fails.txt" contains all the names of sequences that could not be rotated.
 		* "all_annotations.gff" contains all the prokka annotations of rotated sequences.
+		* "all_results.csv" contains a summary of the results.
 		* "annotatedFastas.gff" contains all the annotations in gff format, plus all the sequences in a ##FASTA section.
+
+### Result CSVs:
+CSVs created as reports contain the following information:
+* Name: Sequence ID
+* Success: Successful rotation of the sequence
+* Shift: Position the record was shifted to, relative to its old base numbering
+* Reversed: Was the sequence reverse complemented
+* Genbank retrieved: Did this sequence use a genbank file for its output annotations
+* Step failed: For failed rotations, the step that failed. Either "annotation" if Prokka didn't find the rep or cap genes, or "motif" if the rep origin sequence couldn't be located
+* Possible rep origins: Locations of other possible rep origins, relative to the originl record's numbering.
 
 ## Test command
 This pipeline comes with some circovirus genomes from NCBI as test material, as well as 6 replication origins to search for: NAGTATTAC; YATTATTAC. You may wish to make your own sites file with all replication origins mentioned by [ICTV's Circovirus fact sheet](https://talk.ictvonline.org/ictv-reports/ictv_online_report/ssdna-viruses/w/circoviridae/659/genus-circovirus): NANTATTAC.

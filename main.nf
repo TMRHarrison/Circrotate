@@ -137,7 +137,7 @@ process performProkka {
   file "**/*"
 
   script:
-  sed_pat_fn = "${inp.baseName}-sedpat.txt"
+  sed_pat_fn = "${inp.baseName}-sedpat.spf" // sed pattern file
 
   """
   prokka --outdir prokka-out --force --prefix ${inp.baseName} --cpus ${task.cpus} --gcode 1 --kingdom virus ${inp} ${params.prokkaOpts}
