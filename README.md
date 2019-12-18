@@ -44,12 +44,12 @@ Recommended versions of these dependencies are in the ```environment.yml``` file
 
 ### Result CSVs:
 CSVs created as reports contain the following information:
-* Name: Sequence ID
-* Success: Successful rotation of the sequence
-* Shift: Position the record was shifted to, relative to its old base numbering
-* Reversed: Was the sequence reverse complemented
-* Genbank retrieved: Did this sequence use a genbank file for its output annotations
-* Step failed: For failed rotations, the step that failed. Either "annotation" if Prokka didn't find the rep or cap genes, or "motif" if the rep origin sequence couldn't be located
+* Name: Sequence ID.
+* Success: Successful rotation of the sequence.
+* Shift: Position the record was shifted to, relative to its old base numbering.
+* Reversed: Was the sequence reverse complemented.
+* Genbank retrieved: Did this sequence use a genbank file for its output annotations.
+* Step failed: For failed rotations, the step that failed. Either "annotation" if Prokka didn't find the rep or cap genes, or "motif" if the rep origin sequence couldn't be located.
 * Possible rep origins: Locations of other possible rep origins, relative to the originl record's numbering.
 
 ## Test command

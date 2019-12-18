@@ -195,6 +195,7 @@ def main():
     rec_succ = []
     # contains a dict with:
     #   ["rec"]: the record
+    #   ["name"]: the sequence ID. This gets changed in the record on successful rotations, so it gets snapshotted here
     #   ["shift"]: the distance shifted
     #   ["rev_comp"]: T/F reverse complement necessary
     #   ["genbank"]: true if genbank record was successfully located.
@@ -278,6 +279,7 @@ def main():
                 # just pop in a couple extra things:
 
                 gbk_found = out_rec.id in gb_ind
+                recID = out_rec.id
 
                 # sequence is circular
                 out_rec.features.append(
@@ -304,13 +306,14 @@ def main():
                 out_rec.description = ""
 
                 # add some information to the ID so it doesn't get lost
-                out_rec.id += "_("+str(shift_offset+1)+".."+str(len(out_rec))+")_(1.."+str(shift_offset)+")"
+                out_rec.id += "|rotated_to="+str(shift_offset+1)+"|"
 
                 # put the successful record into the table to get printed out later
                 rec_succ.append(
                     {
                         "rec": out_rec,
-                        "shift": shift_offset,
+                        "name": recID,
+                        "shift": shift_offset+1, # +1 because everything else starts numbering at 1 and not 0
                         "rev_comp": rcomp,
                         "genbank": gbk_found,
                         "posses": posses
@@ -331,13 +334,14 @@ def main():
 
     # make a new file, either forcing overwrite of the old file or not, depending on the setting.
 
-    # get the list of records from the successful records
-    with open(args.output+"-annotations.gff", "w" if args.force else "x") as gffout_file:
-        GFF.write([r["rec"] for r in rec_succ], gffout_file)
+    if rec_succ:
+        # get the list of records from the successful records
+        with open(args.output+"-annotations.gff", "w" if args.force else "x") as gffout_file:
+            GFF.write([r["rec"] for r in rec_succ], gffout_file)
 
-    # same as above but print the fasta sequences
-    with open(args.output+"-seqs.fasta", "w" if args.force else "x") as seqout_file:
-        SeqIO.write([r["rec"] for r in rec_succ], seqout_file, "fasta")
+        # same as above but print the fasta sequences
+        with open(args.output+"-seqs.fasta", "w" if args.force else "x") as seqout_file:
+            SeqIO.write([r["rec"] for r in rec_succ], seqout_file, "fasta")
 
     # Write the fail file iff 1 or more things failed
     if rec_fail:
@@ -366,13 +370,13 @@ def main():
         for r in rec_succ:
             out_writer.writerow(
                 [
-                    r["rec"].id,
+                    r["name"],
                     "yes",
                     r["shift"],
                     r["rev_comp"],
                     r["genbank"],
                     None,
-                    ", ".join(str(i) for i in r["posses"])
+                    ", ".join(str(i+1) for i in r["posses"]) # +1 because numbering usually starts at 1
                 ]
             )
 

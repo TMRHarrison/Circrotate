@@ -69,9 +69,9 @@ if (params.in == null) {
   exit 1
 }
 
-motif_vch = Channel.value(file(params.motif))
+motif_file = file(params.motif)
 
-genBank_vch = params.genBank ? Channel.value(file(params.in)) : Channel.value(false)
+genBank_file = file(params.in)
 
 if (params.genBank) {
   log.info"Genbank file in use"
@@ -87,10 +87,10 @@ else {
 // Otherwise, the input should be fasta and sent straight to giveFileNameFastaID
 process makeFasta {
   input:
-  file inp from genBankIn_ch // <--- --in file when --genbank specified 
+  path inp from genBankIn_ch // <--- --in file when --genbank specified 
 
   output:
-  file "${inp.baseName}.fasta" into gbFastaSequences_ch // ---> giveFileNameFastaID
+  path "${inp.baseName}.fasta" into gbFastaSequences_ch // ---> giveFileNameFastaID
 
   when:
   params.genBank
@@ -106,11 +106,11 @@ process makeFasta {
 // The rest of the filename is maintained to ensure the output won't have any overlapping names.
 process giveFileNameFastaID {
   input:
-  file inp from fastaSequences_ch.mix(gbFastaSequences_ch).splitFasta(by: params.seqBatch, file: true) // <--- --in for fasta files, makeFasta for genbank files
+  path inp from fastaSequences_ch.mix(gbFastaSequences_ch).splitFasta(by: params.seqBatch, file: true) // <--- --in for fasta files, makeFasta for genbank files
   // mixing the channels allows one or the other to be optional
 
   output:
-  file "*_${inp}" into renamedSequences_ch // ---> performProkka
+  path "*_${inp}" into renamedSequences_ch // ---> performProkka
 
   """
   fastaID=\$(awk -F "[^a-zA-Z0-9\\._-]" '/^>/ {print \$2; exit}' ${inp})
@@ -129,12 +129,11 @@ process performProkka {
     }
 
   input:
-  file inp from renamedSequences_ch // <--- giveFileNameFastaID
+  path inp from renamedSequences_ch // <--- giveFileNameFastaID
 
   output:
-  file "**/*.gff" into annotatedSeqs_ch // ---> rotateSeq
-  file "*${sed_pat_fn}" into seqDescs_ch // ---> rotateSeq
-  file "**/*"
+  tuple path("**/*.gff"), path(sed_pat_fn) into annotatedSeqs_ch // ---> rotateSeq
+  path "**/*"
 
   script:
   sed_pat_fn = "${inp.baseName}-sedpat.spf" // sed pattern file
@@ -161,24 +160,25 @@ process rotateSeqs {
     }
 
   input:
-  file inp from annotatedSeqs_ch // <--- performProkka
-  file sedPat from seqDescs_ch // <--- performProkka
-  file motifs from motif_vch // <--- --motif
-  file gbinp from genBank_vch // <--- --in iff params.genbank is set
+  tuple path(inp), path(sedPat) from annotatedSeqs_ch // <--- performProkka
+  file motifs from motif_file // <--- --motif
+  file gbinp from genBank_file // <--- --in iff params.genbank is set
 
   output:
-  file "*.fasta" into combineFastas_ch // ---> combineControlSeqs
-  file "*.txt" optional true into combineFails_ch // ---> combineFails
-  file "*.gff" into combineAnnotations_ch // ---> combineAnnotations
-  file "*.csv" into combineCsv_ch // ---> combineAnnotations
+  path "*.fasta" optional true into combineFastas_ch // ---> combineControlSeqs
+  path "*.txt" optional true into combineFails_ch // ---> combineFails
+  path "*.gff" optional true into combineAnnotations_ch // ---> combineAnnotations
+  path "*.csv" into combineCsv_ch // ---> combineAnnotations
 
   script:
   pref = "${inp.baseName}_rotated"
-  gb = gbinp ? "--genbank ${gbinp}" : ""
+  gb = gbinp.name != 'NO_FILE' ? "--genbank ${gbinp}" : ""
 
+  // Rotate the sequence, then if it puts a fasta out, put the description back on the fasta
+  // piping to echo just suppresses the error code for sed if rotate_seq.py doesn't make a fasta file
   """
   rotate_seq.py --input ${inp} --output ${pref} --motif ${motifs} ${gb}
-  sed -i -f ${sedPat} *.fasta
+  sed -i -f ${sedPat} *.fasta | echo
   """
 }
 
@@ -187,17 +187,12 @@ process combineFastas {
   publishDir "${params.out}/sequences", mode: 'copy'
 
   input:
-  file "f*.fasta" from combineFastas_ch.collect() // <--- rotateSeqs
+  path "f*.fasta" from combineFastas_ch.collect() // <--- rotateSeqs
 
   output:
-  file "all_sequences.fasta" into combinedFastas_ch // ---> combineFastaGff
+  path "all_sequences.fasta" into combinedFastas_ch // ---> combineFastaGff
 
-  /* strip all the blank lines
-  if none are found, suppress the error exit code by piping through cat
-  It doesn't like doing it in one stream from multiple files, so it concatenates to a single file first.
-  This way does take more disk space and time but also for some reason it would hang 
-  at 0% memory usage and just fill the work/ folder with massive (>100GB) files otherwise
-  
+  /*
   Hey, I found more weirdness: .collect() will give files sequential names to globs (1.fa, 2.fa, 3.fa, etc.)
   But only if there are multiple files in the queue. If there is one file, the glob gets removed completely.
   So if this is "*.fasta", the single collected file is ".fasta" which is a hidden file. Which cat can't find.
@@ -206,8 +201,7 @@ process combineFastas {
   I guess it makes sense to do it like that, but it would have been nice if it said this was anywhere in the docs :^)
   */
   """
-  cat *.fasta > tmp.f
-  grep -v "^\$" tmp.f | cat - > all_sequences.fasta
+  cat *.fasta > all_sequences.fasta
   """
 }
 
@@ -216,15 +210,13 @@ process combineFails {
   publishDir "${params.out}/sequences", mode: 'copy'
 
   input:
-  file "t*.txt" from combineFails_ch.collect() // <--- rotateSeqs
+  path "t*.txt" from combineFails_ch.collect() // <--- rotateSeqs
 
   output:
-  file "all_fails.txt"
+  path "all_fails.txt"
 
-  // strip all the blank lines
   """
-  cat *.txt > tmp.t
-  grep -v "^\$" tmp.t | cat - > all_fails.txt
+  cat *.txt > all_fails.txt
   """
 }
 
@@ -233,12 +225,17 @@ process combineAnnotations {
   publishDir "${params.out}/sequences", mode: 'copy'
 
   input:
-  file "g*.gff" from combineAnnotations_ch.collect() // <--- rotateSeqs
+  path "g*.gff" from combineAnnotations_ch.collect() // <--- rotateSeqs
 
   output:
-  file "all_annotations.gff" into combinedAnnotations_ch // ---> combineFastaGff
+  path "all_annotations.gff" into combinedAnnotations_ch // ---> combineFastaGff
 
-  // strip the headers and place a single gff header in the final file.
+  /* 
+  strip the headers and place a single gff header in the final file.
+  It doesn't like doing it in one stream from multiple files, so it concatenates to a single file first.
+  This way does take more disk space and time but also for some reason it would hang 
+  at 0% memory usage and just fill the work/ folder with massive (>100GB) files otherwise
+  */
   """
   cat *.gff > tmp.g
   HEADER=\$(head -n1 tmp.g)
@@ -251,10 +248,10 @@ process combineResults {
   publishDir "${params.out}/sequences", mode: 'copy'
 
   input:
-  file "c*.csv" from combineCsv_ch.collect() // <--- rotateSeqs
+  path "c*.csv" from combineCsv_ch.collect() // <--- rotateSeqs
 
   output:
-  file "all_results.csv"
+  path "all_results.csv"
 
   // strip the headers and place a single csv header in the final file.
   """
@@ -269,11 +266,11 @@ process combineFastaGff {
   publishDir "${params.out}/sequences", mode: 'copy'
 
   input:
-  file "all_sequences.fasta" from combinedFastas_ch // <--- combineFastas
-  file "all_annotations.gff" from combinedAnnotations_ch // <--- combineAnnotations
+  path "all_sequences.fasta" from combinedFastas_ch // <--- combineFastas
+  path "all_annotations.gff" from combinedAnnotations_ch // <--- combineAnnotations
 
   output:
-  file "annotatedFastas.gff"
+  path "annotatedFastas.gff"
 
   """
   (cat all_annotations.gff ; echo "##FASTA" ; cat all_sequences.fasta) > annotatedFastas.gff
