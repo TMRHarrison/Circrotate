@@ -1,0 +1,845 @@
+LOCUS       JX512854                1768 bp    DNA     circular VRL 11-MAR-2013
+DEFINITION  Porcine circovirus 2 isolate S00-1966/4-3, complete genome.
+ACCESSION   JX512854
+VERSION     JX512854.1
+KEYWORDS    .
+SOURCE      Porcine circovirus 2
+  ORGANISM  Porcine circovirus 2
+            Viruses; Circoviridae; Circovirus.
+REFERENCE   1  (bases 1 to 1768)
+  AUTHORS   Klausmann,S., Zimmermann,D. and Brugnera,E.
+  TITLE     Recombinant porcine circovirus 2
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1768)
+  AUTHORS   Klausmann,S., Zimmermann,D. and Brugnera,E.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (21-AUG-2012) Department of Farm Animals, University of
+            Zurich, Winterthurerstr. 268, Zurich, ZH 8057, Switzerland
+COMMENT     ##Assembly-Data-START##
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1768
+                     /organism="Porcine circovirus 2"
+                     /mol_type="genomic DNA"
+                     /isolate="S00-1966/4-3"
+                     /isolation_source="tissue from PMWS diseased pig"
+                     /host="pig"
+                     /db_xref="taxon:85708"
+                     /country="Switzerland"
+                     /collection_date="2000"
+                     /PCR_primers="fwd_name: ecorif, fwd_seq:
+                     ccagaattcaaccttaacctttcttattc, rev_name: ecorir, rev_seq:
+                     gaataagaaaggttaaggttgaattctgg"
+                     /PCR_primers="fwd_name: pflmif, fwd_seq:
+                     gcaaatgggctgctaattttgcag, rev_name: pflmir, rev_seq:
+                     cacttcttcaccatggtaaccatcc"
+                     /note="genotype: PCV2a"
+     CDS             complement(join(1382..1768,1..315))
+                     /note="ORF2"
+                     /codon_start=1
+                     /product="putative capsid protein"
+                     /protein_id="AGG56640.1"
+                     /translation="MTYPRRRFRRRRHRPRSHLGQILRRRPWLVHPRHRYRWRRKNGI
+                     FNARLSRTFGYTVKATTVSTPSWAVDMLRFNLDDFVPPGGGTNKISIPFEYYRIRKVK
+                     VEFWPCSPITQGDRGVGSSAIILDDNFVIKATAQTYDPYVNYSSRHTIPQPFSYHSRY
+                     FTPKPVLDSTIDYFQPNNKRNQLWMRLQTSRNVDHVGLGTAFENSKYDQDYNIRVTMY
+                     VQFREFNLKDPPLKP"
+     CDS             399..1343
+                     /note="ORF1"
+                     /codon_start=1
+                     /product="putative replicase protein"
+                     /protein_id="AGG56641.1"
+                     /translation="MPSKKNGRSGPQPHKRWVFTLNNPSEDERKKIRELPISLFDYFI
+                     VGEEGNEEGRTPHLQGFANFVKKQTFNKVKWYLGARCHIEKAKGTDQQNKEYCSKEGN
+                     LLIECGAPRSQGQRSDLSTAVSTLLESGSLVTVAEQHPVTFVRNFRGLAELLKVSGKM
+                     QKRDWKTNVHVIVGPPGCGKSKWAANFADPETTYWKPPRNKWWDGYHGEEVVVIDDFY
+                     GWLPWDDLLRLCDRYPLTVETKGGTVPFLARSILITSNQTPLEWYSSTAVPAVEALYR
+                     RITSLVFWKNVTEQSTEEGGQFVTLSPPCPEFPYEINY"
+     CDS             complement(705..1019)
+                     /codon_start=1
+                     /product="putative ORF3 protein"
+                     /protein_id="AGG56642.1"
+                     /translation="MVTIPPLVSRWFPVCGFRVCKISSPFAFTTPRWPHNDVYIGLPI
+                     TLLHFPAHFQKFSQPAEISDKRYRVLLCNGYQTPALQQGTHSSRKVTPLSLRSRSSTL
+                     NK"
+ORIGIN      
+        1 gaattcaacc ttaacctttc ttattctgta gtattcaaag ggtatagaga ttttgttggt
+       61 cccccctccc gggggaacaa agtcgtcaag attaaatctc agcatgtcca ccgcccagga
+      121 gggcgtgctg actgtggtag ccttgacagt atatccgaag gtgcgggaga ggcgggcgtt
+      181 gaagatgcca tttttccttc tccagcggta acggtggcgg gggtggacga gccaggggcg
+      241 gcggcggagg atctggccaa gatggctgcg ggggcggtgt cttcgtctgc ggaaacgcct
+      301 ccttggatac gtcatagctg aaaacgaaag aagtgcgctg taagtattac cagcgcactt
+      361 cggcagcggc agcacctcgg cagcacctca gcagcaacat gcccagcaag aagaatggaa
+      421 gaagcggacc ccaaccacat aaaaggtggg tgttcacgct gaataatcct tccgaagacg
+      481 agcgcaagaa aatacgggag cttccaatct ccctgtttga ttattttatt gttggcgagg
+      541 agggtaatga ggaaggacga acacctcacc tccaggggtt cgctaatttt gtgaaaaagc
+      601 aaacttttaa taaagtgaag tggtatcttg gtgcccgctg ccacatcgag aaagccaaag
+      661 gaactgatca gcagaataaa gaatattgca gtaaagaagg caacttactt attgagtgtg
+      721 gagctcctag atctcaagga caacggagtg acctttctac tgctgtgagt accttgttgg
+      781 agagcgggag tctggtaacc gttgcagagc agcaccctgt aacgtttgtc agaaatttcc
+      841 gcgggctggc tgaacttttg aaagtgagcg ggaaaatgca gaagcgtgat tggaagacca
+      901 atgtacacgt cattgtgggg ccacctgggt gtggtaaaag caaatgggct gctaattttg
+      961 cagacccgga aaccacatac tggaaaccac ctagaaacaa gtggtgggat ggttaccatg
+     1021 gtgaagaagt ggttgttatt gatgactttt atggctggct gccgtgggat gatctactga
+     1081 gactgtgtga tcgatatcca ttgactgtag agactaaagg tggaactgta ccttttttgg
+     1141 cccgcagtat tctgattacc agcaatcaga ccccgttgga atggtactcc tcaactgctg
+     1201 tcccagctgt agaagctctc tatcggagga ttacttcctt ggtattttgg aagaatgtta
+     1261 cagaacaatc cacggaggaa gggggccagt tcgtcaccct ttccccccca tgccctgaat
+     1321 ttccatatga aataaattac tgagtctttt ttatcacttc gtaatggttt ttattattca
+     1381 tttagggttt aagtgggggg tctttaagat taaattctct gaattgtacg tacatggtta
+     1441 cacggatatt gtagtcctgg tcgtatttac tgttttcgaa cgcagtgccg aggcctacgt
+     1501 ggtccacatt tctactggtt tggagtctca tccacagctg attccttttg ttatttggtt
+     1561 ggaagtaatc aatagtggaa tcaagaacag gtttgggtgt gaagtaacgg gagtggtagg
+     1621 agaagggttg ggggattgta tggcgggagg agtagtttac ataggggtca taggtttggg
+     1681 ctgtggcctt tattacaaag ttgtcatcta gaataatagc actggatcca actcccctgt
+     1741 caccctgggt gatcggggag cagggcca
+//
+
+LOCUS       JX512853                1768 bp    DNA     circular VRL 11-MAR-2013
+DEFINITION  Porcine circovirus 2 isolate S94-0371/1a, complete genome.
+ACCESSION   JX512853
+VERSION     JX512853.1
+KEYWORDS    .
+SOURCE      Porcine circovirus 2
+  ORGANISM  Porcine circovirus 2
+            Viruses; Circoviridae; Circovirus.
+REFERENCE   1  (bases 1 to 1768)
+  AUTHORS   Brugnera,E., Zimmermann,D. and Klausmann,S.
+  TITLE     Recombinant porcine circovirus 2
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1768)
+  AUTHORS   Brugnera,E., Zimmermann,D. and Klausmann,S.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (21-AUG-2012) Department of Farm Animals, University of
+            Zurich, Winterthurerstr. 268, Zurich, ZH 8057, Switzerland
+COMMENT     ##Assembly-Data-START##
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1768
+                     /organism="Porcine circovirus 2"
+                     /mol_type="genomic DNA"
+                     /isolate="S94-0371/1a"
+                     /isolation_source="tissue from non-PMWS diseased pig"
+                     /host="pig"
+                     /db_xref="taxon:85708"
+                     /country="Switzerland"
+                     /collection_date="1994"
+                     /PCR_primers="fwd_name: ecorif, fwd_seq:
+                     ccagaattcaaccttaacctttcttattc, rev_name: ecorir, rev_seq:
+                     gaataagaaaggttaaggttgaattctgg"
+                     /PCR_primers="fwd_name: pflmif, fwd_seq:
+                     gcaaatgggctgctaattttgcag, rev_name: pflmir, rev_seq:
+                     cacttcttcaccatggtaaccatcc"
+                     /note="genotype: PCV2a"
+     CDS             complement(join(1382..1768,1..315))
+                     /note="ORF2"
+                     /codon_start=1
+                     /product="putative capsid protein"
+                     /protein_id="AGG56638.1"
+                     /translation="MTYPRRRYRRRRHRPRSHLGQILRRRPWLVHPRHRYRWRRKNGI
+                     FNTRLSRTFGYTVKATTVTTPSWAVDMLRFKIDDFVPPGGGTNKISIPFEYYRIRKVK
+                     VEFWPCSPITQGDRGVGSSAVILDDNFVTKATALTYDPYVNYSSRHTITQPFSYHSRY
+                     FTPKPVLDGTIDYFQPNNKRNQLWLRLQTTGNVDHVGLGTAFENSKYDQDYNIRVTMY
+                     VQFREFNLKDPPLKP"
+     CDS             399..1343
+                     /note="ORF1"
+                     /codon_start=1
+                     /product="putative replicase protein"
+                     /protein_id="AGG56637.1"
+                     /translation="MPSKKNGRSGPQPHKRWVFTLNNPSEDERKKIRELPISLFDYFI
+                     VGEEGNEEGRTPHLQGFANFVKKQTFNKVKWYFGARCHIEKAKGTDQQNKEYCSKEGN
+                     LLMECGAPRSQGQRSDLSTAVSTLLESGSLVTVAEQHPVTFVRNFRGLAELLKVSGKM
+                     QKRDWKTNVHVIVGPPGCGKSKWAANFADPETTYWKPPRNKWWDGYHGEEVVVIDDFY
+                     GWLPWDDLLRLCDRYPLTVETKGGTVPFLARSILITSNQTPLEWYSSAAVPAVEALYR
+                     RITSLVFWKNATEQSTEEGGQFVTLSPPCPEFPYEINY"
+     CDS             complement(705..1019)
+                     /codon_start=1
+                     /product="putative ORF3 protein"
+                     /protein_id="AGG56639.1"
+                     /translation="MVTIPPLVSRWFPVCGFRVCKISSPFAFATPRWPHNDVYIRLPI
+                     TLLHFPAHFQKFSQPAEISDKRYRVLLCNGHQTPALQQGTHSSRQVTPLSLRSRSSTF
+                     HQ"
+ORIGIN      
+        1 gaattcaacc ttaacctttc ttattctgta gtattcaaag ggtatagaga ttttgttggt
+       61 cccccctccc gggggaacaa agtcgtcaat tttaaatctc agcatgtcca ccgcccagga
+      121 gggcgttgtg actgtggtag ccttgacagt atatccgaag gtgcgggaga ggcgggtgtt
+      181 gaagatgcca tttttccttc tccagcggta acggtggcgg gggtggacga gccaggggcg
+      241 gcggcggagg atctggccaa gatggctgcg ggggcggtgt cttcgtctgc ggtaacgcct
+      301 ccttggatac gtcatagctg aaaacgaaag aagtgcgctg taagtattac cagcgcactt
+      361 cggcagcggc agcacctcgg cagcacctca gcagcaacat gcccagcaaa aagaatggaa
+      421 gaagcggacc ccaaccacac aaaaggtggg tgttcacgct gaataatcct tccgaagacg
+      481 agcgcaagaa aatacgggag cttccaatct ccctttttga ttattttatt gttggcgagg
+      541 agggtaatga ggaaggacga acaccccacc tccaggggtt cgctaatttt gtgaagaagc
+      601 aaacatttaa taaagtgaaa tggtatttcg gtgcccgctg ccacatcgag aaagcgaaag
+      661 gaactgatca gcagaataaa gaatattgca gtaaagaagg caacttactg atggaatgtg
+      721 gagctcctag atctcaagga caacggagtg acctgtctac tgctgtgagt accttgctgg
+      781 agagcgggag tctggtgacc gttgcagagc agcaccctgt aacgtttgtc agaaatttcc
+      841 gcgggctggc tgaacttttg aaagtgagcg ggaaaatgca gaagcgtgat tggaagacga
+      901 atgtacacgt cattgtgggg ccacctgggt gtggcaaaag caaatgggct gctaattttg
+      961 cagacccgga aaccacatac tggaaaccac ctagaaacaa gtggtgggat ggttaccatg
+     1021 gtgaagaagt ggttgttatt gatgactttt atggctggct gccgtgggat gatctactga
+     1081 gactgtgtga tcggtatcca ttgactgtag agactaaagg tggaactgta ccttttttgg
+     1141 cccgcagtat tctgattacc agcaatcaga ccccgttgga atggtactcc tcggctgctg
+     1201 tcccagctgt agaagctctc tatcggagga ttacttcctt ggtattttgg aagaatgcta
+     1261 cagaacagtc cacggaggaa gggggccagt tcgtcaccct ttccccccca tgccctgaat
+     1321 ttccatatga aataaattac tgagtctttt ttatcacttc gtaatggttt ttattattca
+     1381 tttagggttt aagtgggggg tctttaagat taaattctct gaattgtaca tacatggtta
+     1441 cacggatatt gtagtcctgg tcgtatttac tgttttcgaa cgcagtgccg aggcctacat
+     1501 ggtctacatt tccagtagtt tgtagtctca gccagagttg atttcttttg ttattgggtt
+     1561 ggaagtaatc gattgtccca tcaaggacag gtttgggggt gaaatagcgg gagtggtagg
+     1621 agaagggttg ggttatggta tggcgggagg agtagtttac ataggggtca taggttaggg
+     1681 ctgtggcctt tgttacaaag ttatcatcta gaataacagc actggatcca actcccctgt
+     1741 caccctgggt gattggggag cagggcca
+//
+
+LOCUS       KC261601                1767 bp    DNA     circular VRL 11-MAR-2013
+DEFINITION  Porcine circovirus type 2-B strain BRA_JAV2_2008, complete genome.
+ACCESSION   KC261601
+VERSION     KC261601.1
+KEYWORDS    .
+SOURCE      Porcine circovirus type 2-B
+  ORGANISM  Porcine circovirus type 2-B
+            Viruses; Circoviridae; Circovirus.
+REFERENCE   1  (bases 1 to 1767)
+  AUTHORS   Castro,A.M.M.G., Castro,F.G. Jr., Budino,F.E.L., Baldin,C.M.,
+            Silva,S.O.S., Brandao,P.E. and Richtzenhain,L.J.
+  TITLE     Detection of genetic characterization of Porcine circovirus 2
+            (pcv2) in brazilian wildlife boars
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1767)
+  AUTHORS   Castro,A.M.M.G., Castro,F.G. Jr., Budino,F.E.L., Baldin,C.M.,
+            Silva,S.O.S., Brandao,P.E. and Richtzenhain,L.J.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (03-DEC-2012) Preventive Veterinary Medicine and Animal
+            Health, School of Veterinary Medicine, University of Sao Paulo, Av
+            Prof Dr. Orlando M Paiva 87, Sao Paulo, SP 05508270, Brazil
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: CapContig v. 1991
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1767
+                     /organism="Porcine circovirus type 2-B"
+                     /mol_type="genomic DNA"
+                     /strain="BRA_JAV2_2008"
+                     /isolation_source="lymph node"
+                     /host="wild boar"
+                     /db_xref="taxon:85709"
+                     /country="Brazil"
+                     /collection_date="2008"
+                     /note="type: 2b"
+     CDS             51..995
+                     /codon_start=1
+                     /product="replicase"
+                     /protein_id="AGG55272.1"
+                     /translation="MPSKKNGRSGPQPHKRWVFTLNNPSEDERKKIRDLPISLFDYFI
+                     VGEEGNEEGRTPHLQGFANFVKKQTFNKVKWYLGARCHIEKAKGTDQQNKEYCSKEGN
+                     LLMECGAPRSQGQRSDLSTAVSTLLESGSLVTVAEQHPVTFVRNFRGLAELLKVSGKM
+                     QKRDWKTNVHVIVGPPGCGKSKWAANFADPETTYWKPPRNKWWDGYHGEEVVVIDDFY
+                     GWLPWDDLLRLCDRYPLTVETKGGTVPFLARSILITSNQTPLEWYSSTAVPAVEALYR
+                     RITSLVFWKNATEQSTEEGGQFVTLSPPCPEFPYEINY"
+     CDS             complement(1033..1734)
+                     /codon_start=1
+                     /product="capsid"
+                     /protein_id="AGG55271.1"
+                     /translation="MTYPRRRYRRRRHRPRSHLGQILRRRPWLVHPRHRYRWRRKNGI
+                     FNTRLSRTFGYTIKRTTVKTPSWAVDMMRFNINDFLPPGGGSNPRSVPFEYYRIRKVK
+                     VEFWPCSPITQGDRGVGSSAVILDDNFVTKATALTYDPYVNYSSRHTITQPFSYHSRY
+                     FTPKPVLDSTIDYFQPNNKRNQLWLRLQTTGNVDHVGLGTAFENSIYDQEYNIRVTMY
+                     VQFREFNLKDPPLNP"
+ORIGIN      
+        1 accagcgcac ttcggcagcg gcagcacctc ggcagcacct cggcagcaac atgcccagca
+       61 agaagaatgg aagaagcgga ccccaacccc ataaaaggtg ggtgttcact ctgaataatc
+      121 cttccgaaga cgagcgcaag aaaatacggg atcttccaat atccctattt gattatttta
+      181 ttgttggcga ggagggtaat gaggaaggac gaacacctca cctccagggg ttcgctaatt
+      241 ttgtgaagaa gcagactttt aataaagtga agtggtattt gggtgcccgc tgccacatcg
+      301 agaaagcgaa aggaacagat cagcagaata aagaatactg cagtaaagaa ggcaacttac
+      361 tgatggagtg tggagctcct agatctcagg gacaacggag tgacctgtct actgctgtga
+      421 gtaccttgtt ggagagcggg agtctggtga ccgttgcaga gcagcaccct gtaacgtttg
+      481 tcagaaattt ccgcgggctg gctgaacttt tgaaagtgag cgggaaaatg cagaagcgtg
+      541 attggaagac taatgtacac gtcattgtgg ggccacctgg gtgtggtaaa agcaaatggg
+      601 ctgctaattt tgcagacccg gaaaccacat actggaaacc acctagaaac aagtggtggg
+      661 atggttacca tggtgaagaa gtggttgtta ttgatgactt ttatggctgg ctgccctggg
+      721 atgatctact gagactgtgt gatcgatatc cattgactgt agagactaaa ggtggaactg
+      781 tacctttttt ggcccgcagt attctgatta ccagcaatca gaccccgttg gaatggtact
+      841 cctcaactgc tgtcccagct gtagaagctc tttatcggag gattacttcc ttggtatttt
+      901 ggaagaatgc tacagaacaa tccacggagg aagggggcca gttcgtcacc ctttcccccc
+      961 catgccctga atttccatat gaaataaatt actgagtctt ttttatcact tcgtaatggt
+     1021 ttttattatt cattaagggt taagtggggg gtctttaaga ttaaattctc tgaattgtac
+     1081 atacatggtt acacggatat tgtattcctg gtcgtatata ctgttttcga acgcagtgcc
+     1141 gaggcctacg tggtctacat ttccagtagt ttgcagtctc agccacagct gatttctttt
+     1201 gttgtttggt tggaagtaat caatagtgga atctaggaca ggtttggggg taaagtagcg
+     1261 ggagtggtag gagaagggct gggttatggt atggcgggag gagtagttta cataggggtc
+     1321 ataggtgagg gctgtggcct ttgttacaaa gttatcatct agaataacag cactggagcc
+     1381 cactcccctg tcaccctggg tgatcgggga gcagggccag aattcaacct taacctttct
+     1441 tattctgtag tattcaaagg gcacagagcg ggggtttgag ccccctcctg ggggaagaaa
+     1501 gtcattaata ttgaatctca tcatgtccac cgcccaggag ggcgttttga ctgtggttcg
+     1561 cttgatagta tatccgaagg tgcgggagag gcgggtgttg aagatgccat ttttccttct
+     1621 ccagcggtaa cggtggcggg ggtggacgag ccaggggcgg cggcggagga tctggccaag
+     1681 atggctgcgg gggcggtgtc ttcttctccg gtaacgcctc cttggatacg tcatatctga
+     1741 aaacgaaaga agtgcgctgt aagtatt
+//
+
+LOCUS       KC261600                1767 bp    DNA     circular VRL 11-MAR-2013
+DEFINITION  Porcine circovirus type 2-B strain BRA_JAV1_2008, complete genome.
+ACCESSION   KC261600
+VERSION     KC261600.1
+KEYWORDS    .
+SOURCE      Porcine circovirus type 2-B
+  ORGANISM  Porcine circovirus type 2-B
+            Viruses; Circoviridae; Circovirus.
+REFERENCE   1  (bases 1 to 1767)
+  AUTHORS   Castro,A.M.M.G., Castro,F.G. Jr., Budino,F.E.L., Baldin,C.M.,
+            Silva,S.O.S., Brandao,P.E. and Richtzenhain,L.J.
+  TITLE     Detection of genetic characterization of Porcine circovirus 2
+            (pcv2) in brazilian wildlife boars
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1767)
+  AUTHORS   Castro,A.M.M.G., Castro,F.G. Jr., Budino,F.E.L., Baldin,C.M.,
+            Silva,S.O.S., Brandao,P.E. and Richtzenhain,L.J.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (03-DEC-2012) Preventive Veterinary Medicine and Animal
+            Health, School of Veterinary Medicine, University of Sao Paulo, Av
+            Prof Dr. Orlando M Paiva 87, Sao Paulo, SP 05508270, Brazil
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: CapContig v. 1991
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1767
+                     /organism="Porcine circovirus type 2-B"
+                     /mol_type="genomic DNA"
+                     /strain="BRA_JAV1_2008"
+                     /isolation_source="lymph node"
+                     /host="wild boar"
+                     /db_xref="taxon:85709"
+                     /country="Brazil"
+                     /collection_date="2008"
+                     /note="type: 2b"
+     CDS             51..995
+                     /codon_start=1
+                     /product="replicase"
+                     /protein_id="AGG55270.1"
+                     /translation="MPSKKNGRSGPQPHKRWVFTLNNPSEDERKKIRDLPISLFDYFI
+                     VGEEGNEEGRTPHLQGFANFVKKQTFNKVKWYLGARCHIEKAKGTDQQNKEYCSKEGN
+                     LLVECGAPRSQGQRSDLSTAVSTLLESGSLVTVAEQHPVTFVRNFRGLAELLKVSGKM
+                     QKRDWKTNVHVIVGPPGCGKSKWAANFADPETTYWKPPRNKWWDGYHGEEVVVIDDFY
+                     GWLPWDDLLRLCDRYPLTVETKGGTVPFLARSILITSNQTPLEWYSSTAVPAVEALYR
+                     RITSLVFWKNATEQSTEEGGQFVTLSPPCPEFPYEINY"
+     CDS             complement(1033..1734)
+                     /codon_start=1
+                     /product="capsid"
+                     /protein_id="AGG55269.1"
+                     /translation="MTYPRRRYRRRRHRPRSHLGQILRRRPWLVHPRHRYRWRRKNGI
+                     FNTRLSRTFGYTIKRTTVKTPSWAVDMMRFNINDFLPPGGGSNPRSVPFEYYRIRKVK
+                     VEFWPCSPITQGDRGVGSSAVILDDNFVTKATALTYDPYVNYSSRHTITQPFSYHSRY
+                     FTPKPVLDSTIDYFQPNNKRNQLWLRLQTTGNVDHVGLGTAFENSIYDQEYNIRVTMY
+                     VQFREFNLKDPPLNP"
+ORIGIN      
+        1 accagcgcac ttcggcagcg gcagcacctc ggcagcacct cggcagcaac atgcccagca
+       61 agaagaatgg aagaagcgga ccccaacccc ataaaaggtg ggtgttcact ctgaataatc
+      121 cttccgaaga cgagcgcaag aaaatacggg atcttccaat atccctattt gattatttta
+      181 ttgttggcga ggagggtaat gaggaaggac gaacacctca cctccagggg ttcgctaatt
+      241 ttgtgaagaa gcagactttt aataaagtga agtggtattt gggtgcccgc tgccacatcg
+      301 agaaagcgaa aggaacagat cagcagaata aagaatactg cagtaaagaa ggcaacttac
+      361 tggtggagtg tggagctcct agatctcagg gacaacggag tgacctgtct actgctgtga
+      421 gtaccttgtt ggagagcggg agtctggtga ccgttgcaga gcagcaccct gtaacgtttg
+      481 tcagaaattt ccgcgggctg gctgaacttt tgaaagtgag cgggaaaatg cagaagcgtg
+      541 attggaagac taatgtacac gtcattgtgg ggccacctgg gtgtggtaaa agcaaatggg
+      601 ctgctaattt tgcagacccg gaaaccacat actggaaacc acctagaaac aagtggtggg
+      661 atggttacca tggtgaagaa gtggttgtta ttgatgactt ttatggctgg ctgccctggg
+      721 atgatctact gagactgtgt gatcgatatc cattgactgt agagactaaa ggtggaactg
+      781 tacctttttt ggcccgcagt attctgatta ccagcaatca gaccccgttg gaatggtact
+      841 cctcaactgc tgtcccagct gtagaagctc tttatcggag gattacttcc ttggtatttt
+      901 ggaagaatgc tacagaacaa tccacggagg aagggggcca gttcgtcacc ctttcccccc
+      961 catgccctga atttccatat gaaataaatt actgagtctt ttttatcact tcgtaatggt
+     1021 ttttattatt cattaagggt taagtggggg gtctttaaga ttaaattctc tgaattgtac
+     1081 atacatggtt acacggatat tgtattcctg gtcgtatata ctgttttcga acgcagtgcc
+     1141 gaggcctacg tggtctacat ttccagtagt ttgcagtctc agccacagct gatttctttt
+     1201 gttgtttggt tggaagtaat caatagtgga atctaggaca ggtttggggg taaagtagcg
+     1261 ggagtggtag gagaagggct gggttatggt atggcgggag gagtagttta cataggggtc
+     1321 ataggtgagg gctgtggcct ttgttacaaa gttatcatct agaataacag cactggagcc
+     1381 cactcccctg tcaccctggg tgatcgggga gcagggccag aattcaacct taacctttct
+     1441 tattctgtag tattcaaagg gcacagagcg ggggtttgag ccccctcctg ggggaagaaa
+     1501 gtcattaata ttgaatctca tcatgtccac cgcccaggag ggcgttttga ctgtggttcg
+     1561 cttgatagta tatccgaagg tgcgggagag gcgggtgttg aagatgccat ttttccttct
+     1621 ccagcggtaa cggtggcggg ggtggacgag ccaggggcgg cggcggagga tctggccaag
+     1681 atggctgcgg gggcggtgtc ttcttctccg gtaacgcctc cttggatacg tcatatctga
+     1741 aaacgaaaga agtgcgctgt aagtatt
+//
+
+LOCUS       KC249977                1767 bp    DNA     circular VRL 10-MAR-2013
+DEFINITION  Porcine circovirus 2 isolate JM, complete genome.
+ACCESSION   KC249977
+VERSION     KC249977.1
+KEYWORDS    .
+SOURCE      Porcine circovirus 2
+  ORGANISM  Porcine circovirus 2
+            Viruses; Circoviridae; Circovirus.
+REFERENCE   1  (bases 1 to 1767)
+  AUTHORS   Huang,H., He,L., Shao,D., Xie,X. and Ren,C.
+  TITLE     Isolation and characterization of Porcine circovirus type 2 from
+            Jiangmen in 2009
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1767)
+  AUTHORS   Huang,H., He,L., Shao,D., Xie,X. and Ren,C.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (30-NOV-2012) Guangdong Enterprise Key Laboratory Of
+            Biotechnology R&D of Veterinary Biologics, Zhaoqing Dahuanong
+            Animal Health Products Co., Ltd, Zhaoqing High-tech Development
+            Zone, Zhaoqing, Guangdong 526238, The People's Republic of China
+FEATURES             Location/Qualifiers
+     source          1..1767
+                     /organism="Porcine circovirus 2"
+                     /mol_type="genomic DNA"
+                     /isolate="JM"
+                     /host="swine"
+                     /db_xref="taxon:85708"
+                     /country="China"
+                     /collection_date="2009"
+                     /note="passaged in PK15 cells"
+     CDS             51..995
+                     /note="Rep"
+                     /codon_start=1
+                     /product="replication-associated protein"
+                     /protein_id="AGG54972.1"
+                     /translation="MPSKKSGRSGPQPHKRWVFTLNNPSEDERKKIRELPISLFDYFI
+                     VGEEGNEEGRTPHLQGFANFVKKQTFNKVKWYFGARCHIEKAKGTDQQNKEYCSKEGN
+                     LLIECGAPRSQGQRSDLSTAVSTLLESGSLVTVAEQHPVTFVRNFRGLAELLKVSGKM
+                     QKRDWKTNVHVVVGPPGCGKSKWAANFADPETTYWKPPRNKWWDGYHGEEVVVIDDFY
+                     GWLPWDDLLRLCDRYPLTVETKGGTVPFLARSILITSNQTPLEWYSSTAVPAVEALYR
+                     RITSLVFWKNATEQSTEEGGQFVTLSPPCPEFPYEINY"
+     CDS             complement(1030..1734)
+                     /note="Cap"
+                     /codon_start=1
+                     /product="capsid protein"
+                     /protein_id="AGG54973.1"
+                     /translation="MTYPRRRFRRRRHRPRSHLGQILRRRPWLVHPRHRYRWRRKNGI
+                     FNTRLSRTIGYTVKKTTVRTPSWNVDMMRFNINDFLPPGGGSNPLTVPFEYYRIRKVK
+                     VEFWPCSPITQGDRGVGSTAVILDDNFVTKANALTYDPYVNYSSRHTITQPFSYHSRY
+                     FTPKPVLDRTIDYFQPNNKRNQLWLRLQTTGNVDHVGLGTAFENSIYDQDYNIRITMY
+                     VQFREFNLKDPPLNPK"
+ORIGIN      
+        1 accagcgcac ttcggcagcg gcagcacctc ggcagcacct cagcagcaac atgcccagca
+       61 agaagagtgg aagaagcgga ccccaaccac ataaaaggtg ggtgttcacg ctgaataatc
+      121 cttccgaaga cgagcgcaag aaaatacggg agctcccaat ctccctattt gattatttta
+      181 ttgttggcga ggaaggtaat gaggagggcc gaacacccca cctacagggg ttcgctaatt
+      241 ttgtgaagaa gcaaactttt aataaagtga agtggtattt tggtgcccgc tgccacatcg
+      301 agaaagcgaa aggaacagat cagcagaata aagaatattg cagtaaagaa ggcaacttac
+      361 tgatagaatg tggagctcct agatctcaag gacaacggag tgacctctct actgctgtga
+      421 gtaccttgtt ggagagcggg agtctggtga ccgttgcaga gcagcaccct gtaacgtttg
+      481 tcagaaattt ccgcgggctg gctgaacttt tgaaagtgag cgggaaaatg cagaagcgtg
+      541 attggaagac gaatgtacac gtcgttgtgg ggccacctgg gtgtggcaaa agcaaatggg
+      601 ctgctaattt tgcagacccg gaaaccacat actggaaacc acctagaaac aagtggtggg
+      661 atggttacca tggtgaagaa gtggttgtta ttgatgactt ttatggctgg ctgccgtggg
+      721 atgatctact gagactctgt gatcgatatc ctttgactgt tgagactaaa ggtggaactg
+      781 tacctttttt ggcccgcagt attctgatta ccagcaatca gaccccgttg gaatggtact
+      841 cctcaactgc tgtcccagct gtagaagctc tctatcggag gattacttcc ttggtatttt
+      901 ggaagaatgc tacagaacaa tccacggagg aagggggcca gttcgtcacc ctttcccccc
+      961 catgccctga atttccatat gaaataaatt actgagtctt ttttatcact tcgtaatggt
+     1021 ttttattatt cacttagggt taagtggggg gtctttaaga ttaaattctc tgaattgtac
+     1081 atacatggtt atacggatat tgtagtcctg gtcgtagata ctgttttcga acgcagtgcc
+     1141 gaggcctaca tggtctacat ttccagtagt ttgtagtctc agccagagtt gatttctttt
+     1201 gttattgggt tggaagtaat cgattgtcct atcaaggaca ggtttcgggg taaagtaccg
+     1261 ggagtggtag gagaagggct gggttatggt atggcgggag gagtagttta cataggggtc
+     1321 ataggttagg gcattggcct ttgttacaaa gttatcatct agaataacag cagtggagcc
+     1381 cactcccctg tcaccctggg tgattgggga gcagggccag aattcaacct taaccttcct
+     1441 tattctgtag tattcaaagg gcacagtgag ggggtttgag ccccctcctg ggggaagaaa
+     1501 atcattaata ttaaatctca tcatgtccac attccaggag ggcgttctga ctgtggtttt
+     1561 cttgacagta taaccgatgg tgcgggagag gcgggtgttg aagatgccat ttttccttct
+     1621 ccagcggtaa cggtggcggg ggtggacgag ccaggggcgg cggcggagga tctggccaag
+     1681 atggctgcgg gggcggtgtc ttcgtctgcg gaaacgcctc cttggatacg tcatcgctga
+     1741 aaacgaaaga agtgcgctgt aagtatt
+//
+
+LOCUS       JF290418                1767 bp    DNA     circular VRL 11-FEB-2013
+DEFINITION  Porcine circovirus 2, complete genome.
+ACCESSION   JF290418
+VERSION     JF290418.1
+KEYWORDS    .
+SOURCE      Porcine circovirus 2
+  ORGANISM  Porcine circovirus 2
+            Viruses; Circoviridae; Circovirus.
+REFERENCE   1  (bases 1 to 1767)
+  AUTHORS   Puvanendiran,S., Dvorak,C.M.T. and Murtaugh,M.P.
+  TITLE     Molecular pathogenesis of Porcine circovirus type 2
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1767)
+  AUTHORS   Puvanendiran,S., Dvorak,C.M.T. and Murtaugh,M.P.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (02-FEB-2011) Veterinary and Biomedical Sciences, U of
+            MN, 1971 Commonwealth Ave Room 205, St Paul, MN 55108, USA
+FEATURES             Location/Qualifiers
+     source          1..1767
+                     /organism="Porcine circovirus 2"
+                     /mol_type="genomic DNA"
+                     /host="Sus scrofa"
+                     /db_xref="taxon:85708"
+                     /country="Canada"
+                     /collection_date="Mar-2006"
+                     /note="type: 2; genotype: 2B"
+     CDS             51..995
+                     /note="Rep"
+                     /codon_start=1
+                     /product="replicase protein"
+                     /protein_id="AEL17048.1"
+                     /translation="MPSKKNGRSGPQPHKRWVFTLNNPSEDERKKIRDLPISLFDYFI
+                     VGEEGNEEGRTPHLQGFANFVKKQTFNKVKWYLGARCHIEKAKGTDQQNKEYCSKEGN
+                     LLIECGAPRSQGQRSDLSTAVSTLLESGSLVTVAEQYPVTFVRNFRGLAELLKVSGKM
+                     QKRDWKTNVHVIVGPPGCGKSKWAANFADPETTYWKPPRNKWWDGYHGEEVVVIDDFY
+                     GWLPWDDLLRLCDRYPLTVETKGGTVPFLARSILITSNQTPLEWYSSTAVPAVEALYR
+                     RITSLVFWKNATEQSTEEGGQFVTLSPPCPEFPYEINY"
+     CDS             complement(1033..1734)
+                     /codon_start=1
+                     /product="capsid protein"
+                     /protein_id="AEL17049.1"
+                     /translation="MTYPRRRYRRRRHRPRSHLGQILRRRPWLVHPRHRYRWRRKNGI
+                     FNTRLSRTFGYTIKRTTVRTPSWAVDMMSFNINDFLPPGGGSNPRSVPFEYYRIRKVK
+                     VEFWPCSPITQGDRGVGSSAVILDDNFVTKATALTYDPYVNYSSRHTITQPFSYHSRY
+                     FTPKPVLDSTIDYFQPNNKRNQLWLRLQTAGNVDHVGLGTAFENSIYDQEYNIRVTMY
+                     VQFREFNLKDPPLNP"
+ORIGIN      
+        1 accagcgcac ttcggcagcg gcagcacctc ggcagcacct cagcagcaac atgcccagca
+       61 agaagaatgg aagaagcgga ccccaacccc ataaaaggtg ggtgttcact ctgaataatc
+      121 cttccgaaga cgagcgcaag aaaatacggg atcttccaat atccctattt gattatttta
+      181 ttgttggcga ggagggtaat gaggaaggac gaacacctca cctccagggg ttcgctaatt
+      241 ttgtgaagaa gcagactttt aataaagtga agtggtattt gggtgcccgc tgccacatcg
+      301 agaaagccaa aggaacagat cagcagaata aagaatactg cagtaaagaa ggcaacttac
+      361 tgattgagtg tggagctcct agatctcagg gacaacggag tgacctgtct actgctgtga
+      421 gtaccttgtt ggagagcggg agtctggtga ccgttgcaga gcagtaccct gtaacgtttg
+      481 tcagaaattt ccgcgggctg gctgaacttt tgaaagtgag cgggaaaatg cagaagcgtg
+      541 attggaagac taatgtacac gtcattgtgg ggccacctgg gtgtggtaaa agcaaatggg
+      601 ctgctaattt tgcagacccg gaaaccacat actggaaacc acctagaaac aagtggtggg
+      661 atggttacca tggtgaagaa gtggttgtta ttgatgactt ttatggctgg ctgccctggg
+      721 atgatctact gagactgtgt gatcgatatc cattgactgt agagactaaa ggtggaactg
+      781 tacctttttt ggcccgcagt attctgatta ccagcaatca gaccccgttg gaatggtact
+      841 cctcaactgc tgtcccagct gtagaagctc tttatcggag gattacttcc ttggtatttt
+      901 ggaagaatgc tacagaacaa tccacggagg aagggggcca gttcgtcacc ctttcccccc
+      961 catgccctga atttccatat gaaataaatt actgagtctt ttttatcact tcgtaatggt
+     1021 ttttattatt cattaagggt taagtggggg gtctttaaga ttaaattctc tgaattgtac
+     1081 atacatggtt acacggatat tgtattcctg gtcgtatata ctgttttcga atgcagtgcc
+     1141 gaggcctacg tggtctacat ttccagcagt ttgtagtctc agccacagct ggtttctttt
+     1201 gttgtttggt tggaagtaat caatagtgga atctaggaca ggtttggggg taaagtagcg
+     1261 ggagtggtag gagaagggct gggttatggt atggcgggag gagtagttta cataggggtc
+     1321 ataggtgagg gctgtggcct ttgttacaaa gttatcatct agaataacag cactggagcc
+     1381 cactcccctg tcaccctggg tgatcgggga gcagggccag aattcaacct taacctttct
+     1441 tattctgtag tattcaaagg gcacagagcg ggggtttgag ccccctcctg ggggaagaaa
+     1501 gtcattaata ttgaagctca tcatgtccac cgcccaggag ggcgttctga ctgtggttcg
+     1561 cttgatagta tatccgaagg tgcgggatag gcgggtgttg aagatgccat ttttccttct
+     1621 ccagcggtaa cggtggcggg ggtggacgag ccaggggcgg cggcggagga tctggccaag
+     1681 atggctgcgg gggcggtgtc ttcttctccg gtaacgcctc cttggatacg tcatatctga
+     1741 aaacgaaaga agtgcgctgt aagtatt
+//
+
+LOCUS       JQ821392                2063 bp    DNA     circular VRL 05-JUN-2012
+DEFINITION  Canine circovirus isolate 214, complete genome.
+ACCESSION   JQ821392
+VERSION     JQ821392.1
+KEYWORDS    .
+SOURCE      Canine circovirus
+  ORGANISM  Canine circovirus
+            Viruses; Circoviridae; Circovirus.
+REFERENCE   1  (bases 1 to 2063)
+  AUTHORS   Kapoor,A., Dubovi,E.J., Henriquez-Rivera,J.A. and Lipkin,W.I.
+  TITLE     Complete genome sequence of the first canine circovirus
+  JOURNAL   J. Virol. 86 (12), 7018 (2012)
+   PUBMED   22628401
+REFERENCE   2  (bases 1 to 2063)
+  AUTHORS   Kapoor,A., Dubovi,E.J. and Lipkin,W.I.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (26-MAR-2012) Center for Infection and Immunity, Columbia
+            University, 732 West, 168 Street, New York, NY 10032, USA
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: Sequencher v. 4.7
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..2063
+                     /organism="Canine circovirus"
+                     /mol_type="genomic DNA"
+                     /isolate="214"
+                     /isolation_source="serum"
+                     /host="canine"
+                     /db_xref="taxon:1194757"
+                     /country="USA"
+                     /collection_date="2011"
+                     /note="genotype: A1"
+     CDS             1..912
+                     /note="replication protein"
+                     /codon_start=1
+                     /product="replicase"
+                     /protein_id="AFK82575.1"
+                     /translation="MAQAQVDHRGRDSRRGNPVRRWCFTINNPTPEEEDAVKNLAPDA
+                     KYLICGREVGENGTPHLQGFVNLNRTTRMGALKARLGGRGHFEPARGDDCSNRDYCSK
+                     GGDLLIESGEPSRQGKRNDLHDAVVKLKETRSLAAVASAFPETYVKYSRGLRELLLIS
+                     PEMTTPRTWKTEVEVLCGPPGCGKSRYCMETAPAAYWKPRGKWWDGYDGHQDVILDDF
+                     YGWLPFDDMLRLCDRYPLRVETKGGTMNFLARRIFITSNRLPHEWYSDEIGNKDALYR
+                     RLTLIKVWDGGNFIPVPNFMFPHLYNY"
+     CDS             complement(1116..1928)
+                     /codon_start=1
+                     /product="capsid protein"
+                     /protein_id="AFK82576.1"
+                     /translation="MRVRRHARASRRNYRTRPLNRYRRRRQNRFKLFHLRLRRTLTAD
+                     WPTAPVKPTNDPQTETPLLWNFDHLSFKLTDFLQASHGTGDFQHLPPFRFYKFKKVYI
+                     RARWINWPKTLMENVLGRTALDLDGEDQGRGNATRSHLDPGTVPGRLEPPKDPNKAPF
+                     IYDPLQDRSSSRSFNMATGFKRGLTPKPMFTQDITSPSATAPWLTRGTPWVSVIQGAN
+                     MVWNGLSISLRQMKDMRPTTPDTSTSQIPQVQYDISAYIAFKEFDYETGRQL"
+ORIGIN      
+        1 atggctcaag ctcaggttga ccatcgcggc cgagatagcc ggcgaggtaa cccggttcgc
+       61 cgatggtgct tcaccatcaa taatcctact ccggaggagg aggatgccgt gaagaacctt
+      121 gcgccggacg ctaagtactt aatctgtggc cgggaggttg gggagaacgg gaccccgcac
+      181 ctccagggct ttgtcaacct gaatcgaacc actcgtatgg gcgctcttaa ggcacggttg
+      241 ggtggtcgcg gacattttga gcctgctcgg ggggatgact gctcaaaccg ggactattgc
+      301 tctaaggggg gcgatctgtt gattgagtcc ggggaaccta gtaggcaagg aaaacgaaat
+      361 gacttacatg atgctgttgt gaaactgaaa gagacgagga gccttgccgc tgtcgcgtct
+      421 gcgtttccgg agacctacgt caaatactcg cgaggcttgc gagagctgct ccttatatct
+      481 ccggagatga ccacgccccg gacgtggaag acggaagtgg aggttctgtg cggcccccct
+      541 ggatgcggca agagccggta ctgcatggag acagcaccag cggcgtattg gaagcccaga
+      601 ggaaaatggt gggatggcta cgatgggcac caggacgtca ttctggatga cttctatgga
+      661 tggctgccct ttgatgacat gttgagactc tgtgatcggt accctctcag agttgagacc
+      721 aaaggtggta ccatgaattt tttggctcgt cggattttta ttacttctaa tagattgcct
+      781 catgaatggt atagtgatga gattggtaac aaggatgccc tctatcggcg gctcactctg
+      841 attaaagtgt gggatggggg taatttcata cctgtaccta attttatgtt cccccacctg
+      901 tataactact gaaagataaa ggcctctcgc tccgcccgaa gcacggcggg ggctgggggc
+      961 cccgccgtgc gaggggaggc ggtgcgttga ccgaagcgcg gccgggggcc gcgcgagggc
+     1021 gtttacctgt tcacccccct tcgaggctgt ttattaaggt tacaccccct cgaataaaca
+     1081 cacgtgacac tgaatggcgt ttgactgttt atttatcaca actgtctacc agtctcataa
+     1141 tcaaattctt tgaatgcaat ataggcagat atgtcatatt gcacttgtgg gatttgggat
+     1201 gtagaagtgt ctggtgttgt cggcctcata tctttcattt gtctgagaga tatactgagg
+     1261 ccgttccata ccatgttagc cccttgaatg acagataccc atggtgttcc tctggtcagc
+     1321 catggggctg ttgccgaagg actagtaatg tcctgagtga acattggttt tggagtcaga
+     1381 ccccttttaa aaccggtcgc catgttgaat gatcttgatg aagatctgtc ttgtagcggg
+     1441 tcatatatga atggagcctt gttaggatct tttggtggct ccaatcttcc tgggacagtc
+     1501 ccggggtcta aatgtgatct tgtagcattc cctcttcctt gatcttcacc gtcaagatca
+     1561 agtgctgttc ttccaagaac gttttccatg agtgttttgg gccagttaat ccatcttgcc
+     1621 cttatgtata cttttttgaa tttgtagaat ctaaatggtg ggagatgctg gaaatctcct
+     1681 gttccatgcg atgcttgtag gaagtctgtt aatttaaatg acagatggtc aaagttccat
+     1741 agcaacggtg tctctgtctg aggatcattg gttggtttaa ctggtgctgt cggccaatca
+     1801 gctgtgagtg ttctgcgcag tcgcagatga aacagtttga atctgttttg gcgccttctc
+     1861 ctgtaacggt tcaatgggcg tgtcctgtag ttccggcgac ttgcccgggc atgtcttcgc
+     1921 acgcgcatgc gccgtctgta tgttctccgt ctgagcctgc gcggatgaac gggatgtggt
+     1981 tagtgacgta agcgtatcga ggtgccgggc atagtattac ccggcacctc gtcacagaca
+     2041 cagcacaccg cctctgctcc gac
+//
+
+LOCUS       KF673337                2002 bp    DNA     circular VRL 04-DEC-2013
+DEFINITION  Beak and feather disease virus strain BFDV_ID_RL_05_1174, complete
+            genome.
+ACCESSION   KF673337
+VERSION     KF673337.1
+KEYWORDS    .
+SOURCE      Beak and feather disease virus
+  ORGANISM  Beak and feather disease virus
+            Viruses; Circoviridae; Circovirus.
+REFERENCE   1  (bases 1 to 2002)
+  AUTHORS   Sarker,S., Ghorashi,S.A., Forwood,J.K., Metz,S. and Raidal,S.R.
+  TITLE     Characterization of the Complete Genome Sequence of a Beak and
+            Feather Disease Virus from a Moluccan Red Lory (Eos bornea)
+  JOURNAL   Genome Announc 1 (6), e00844-13 (2013)
+   PUBMED   24285654
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 2002)
+  AUTHORS   Sarker,S., Ghorashi,S.A., Forwood,J.K. and Raidal,S.R.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (16-SEP-2013) School of Animal and Veterinary Sciences,
+            Charles Sturt University, Locked Bag 588, Boorooma street, Wagga
+            Wagga, NSW 2650, Australia
+COMMENT     ##Assembly-Data-START##
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..2002
+                     /organism="Beak and feather disease virus"
+                     /mol_type="genomic DNA"
+                     /strain="BFDV_ID_RL_05_1174"
+                     /isolation_source="blood"
+                     /host="Eos bornea"
+                     /db_xref="taxon:77856"
+                     /country="Indonesia"
+                     /collection_date="2005"
+                     /note="genotype: BFDV-RL"
+     CDS             141..1013
+                     /note="Rep"
+                     /codon_start=1
+                     /product="replication-associated protein"
+                     /protein_id="AGX27429.1"
+                     /translation="MPSKEGSGCRRWCFTLNNPTDGEIEYVCALRSDEFHYAIVGREQ
+                     GEQGTPHLQGYFHFKTKKRLSALKKMLPRAHFERAKGSDADNEKYCSKEGDVILTLGI
+                     VARDGHRAFDGAVAAVMAGRKMKEIAREFPDIYVRHGRGLHNLSLLVGSRPRDFKTEV
+                     DVIWGPPGCGKSKWANEQPGSKYYKMRGEWWDGYDGEEIVVIDDFYGWLPYCEMLRLC
+                     DRYPHKVPVKGAFVEFTSKRIIITSNKPPQDWYKEDCDPKPLFRRFTRCWWCPGGDKL
+                     EQVRADFLAHPINF"
+     CDS             complement(1248..1991)
+                     /note="Capsid"
+                     /codon_start=1
+                     /product="capsid protein"
+                     /protein_id="AGX27430.1"
+                     /translation="MWGTSNCACAAFQIRRRARPRYRRRHIRRYRPRRRYFRRRRFTT
+                     NRVYTLRLKRQFKFEIAKQTTQTGSLIWNADYVTFTLDDFLTNTPNPPTLNFEDYRIK
+                     LAKMEMRPTWGHYSIATEGFGHTAVIQDSRITKFKTTADQTQDPLAPFDGAKKWYLSR
+                     GFKRLLRPKPQITISDLVTANQSAALWLNMARTGWIPLQGGPNAAGTKVKHYGIAYSF
+                     PQPEIPIPYVCQLTLYVQFRQFAPNNPST"
+ORIGIN      
+        1 tattacccgc cgcctggggc accggggcac cgcagccatt ggctgcgtgg gcccccgccc
+       61 ctcggtgtac gagaaacgcc ccgaaggggc gtttcgagcc ggcgcgtagc gccacaaccg
+      121 atcaggctcg cccgcgaagt atgccgtcca aggagggctc cggctgtcgc cgttggtgtt
+      181 tcacccttaa caaccctacc gacggcgaga tcgaatacgt ctgtgctctc cggtctgacg
+      241 aattccacta tgccatcgtt ggacgggaac agggcgagca aggtaccccg catttgcaag
+      301 gctactttca ttttaaaact aagaagcgac tgagcgcgct taagaaaatg ttgccgcgag
+      361 cgcattttga gcgcgctaaa gggagcgatg cggataatga gaagtattgc agtaaagagg
+      421 gagacgtgat acttaccctg ggcattgtgg cgagagacgg tcaccgcgcg ttcgatggag
+      481 ctgttgctgc cgtgatggcc ggacgcaaaa tgaaggaaat cgcgcgagag ttcccggata
+      541 tctacgtcag acatgggcgg ggcctgcata acctctcgct attggttggt tcccgcccac
+      601 gtgacttcaa gactgaggtc gacgtcatct ggggcccacc ggggtgtggc aagagtaaat
+      661 gggccaatga acagccgggg agtaaatatt ataaaatgcg cggtgaatgg tgggatggat
+      721 atgatgggga ggagattgtc gtcatagacg acttttatgg gtggctccct tattgcgaga
+      781 tgctccgcct ctgcgaccgt tacccacata aggtgccagt taagggcgcc tttgtggagt
+      841 ttactagcaa gaggatcatt atcacgagca ataagccacc ccaagactgg tacaaggagg
+      901 actgtgaccc gaagccactg ttccggagat tcacccgttg ttggtggtgc cccggtgggg
+      961 ataagttgga acaagtccgg gcagatttcc ttgcccaccc catcaatttt tgaggggctc
+     1021 ggagatgttt aataaaggtc gggcgtcagg ccgaaggcct gatgccgcag ggcgggacgc
+     1081 cctgccggag ggttcgcagg gccgtcaggc ccgagaaccc gaccagcccg gagggcctcg
+     1141 tctgtgtcgg ggggggggcc ccggggggtc cccccgacac gaccatccgt gatagcgccg
+     1201 aaggcgccaa taaaaattcg aaaagctatt tgctgtttga gtctttatta agtgcttgga
+     1261 ttgttcgggg caaattgacg gaattgaaca tacagagtga gttggcatac ataagggatt
+     1321 ggtatttctg gctgagggaa gctgtatgca atgccgtagt gcttgacctt cgttcctgcc
+     1381 gcgttgggtc ctccttgtag tgggatccat ccggttctgg ccatgtttag ccacaatgct
+     1441 gcagactggt tcgctgtcac caggtcgctt atcgttattt gtggtttcgg tctgaggagg
+     1501 cgtttgaagc ccctgctaag ataccatttt ttggcaccgt cgaacggtgc aagtgggtct
+     1561 tgggtttggt ctgcagtagt tttaaattta gttattctgg agtcttggat tacggccgtg
+     1621 tggccgaatc cttctgtagc aatggagtaa tggccccatg tgggcctcat ctccatttta
+     1681 gctaacttaa ttcggtagtc ttcaaaatta agtgtaggtg ggtttggtgt gtttgttagg
+     1741 aagtcgtcca atgtaaaggt aacgtagtca gcattccaaa ttagggagcc agtttgggtg
+     1801 gtttgttttg caatttcgaa tttgaattgg cgtttgagtc tgagagtgta aaccctattg
+     1861 gttgtgaaac ggcgtctgcg gaagtatcta cgtcgcgggc ggtatcgcct gatgtgacgt
+     1921 ctgcggtagc gtgggcgggc tcttcgtcta atctgaaatg cagcgcatgc gcagttagag
+     1981 gtgccccaca ggcggcggtt ag
+//
+
+LOCUS       KP793918                1982 bp    DNA     circular VRL 10-JUN-2015
+DEFINITION  Zebra finch circovirus isolate 8454V25-1, complete genome.
+ACCESSION   KP793918
+VERSION     KP793918.1
+KEYWORDS    .
+SOURCE      Zebra finch circovirus
+  ORGANISM  Zebra finch circovirus
+            Viruses; Circoviridae; Circovirus.
+REFERENCE   1  (bases 1 to 1982)
+  AUTHORS   Rinder,M., Schmitz,A., Peschel,A. and Korbel,R.
+  TITLE     Complete genome sequence of a novel circovirus from zebra finch
+  JOURNAL   Genome Announc 3 (3), e00560-15 (2015)
+   PUBMED   26021933
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 1982)
+  AUTHORS   Rinder,M., Schmitz,A., Peschel,A. and Korbel,R.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (17-FEB-2015) Center for Clinical Veterinary Medicine,
+            LMU Munich, Clinic for Birds, Reptiles, Amphibians and Ornamental
+            Fish, Sonnenstr. 18, Oberschleissheim D-85764, Germany
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: DNAMAN v. Version 5.2.9
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1982
+                     /organism="Zebra finch circovirus"
+                     /mol_type="genomic DNA"
+                     /isolate="8454V25-1"
+                     /host="Taeniopygia guttata"
+                     /db_xref="taxon:1642515"
+                     /country="Germany"
+                     /collection_date="2010"
+     stem_loop       join(1960..1982,1..10)
+     rep_origin      join(1975..1982,1..2)
+     misc_feature    join(1976..1982,1..2)
+                     /note="nonanucleotide motif"
+     gene            29..904
+                     /gene="rep"
+     CDS             29..904
+                     /gene="rep"
+                     /codon_start=1
+                     /product="replicase"
+                     /protein_id="AKC88560.1"
+                     /translation="MPKQARSSPCKRWVFTLNNPTEQEVESVKSLPPSEYHYAIVGKE
+                     KGEQGTPHLQGFLHLKKKVRLNQMKQLIPRAHFEIARGSDEDNEQYCSKEGDVILTIG
+                     APAKGNRSDLAGAVAAVKAGRPMTEVAREFSEAYVKWGRGLKDLALMIGQKPRDFKTE
+                     VIVLTGPSGVGKSRWANEQEGTKYYKMKGDWWDGYSNEDIVVIDDFYGWIPFCELLRL
+                     CDRYPHKVPVKGSYVEFTSKKIIITSNTHPNHWYNEEKCYMQALFRRINKWLFWDVFG
+                     FVDAPDAVKKYPINY"
+     gene            648..1400
+                     /gene="ORFV2"
+     CDS             648..1400
+                     /gene="ORFV2"
+                     /codon_start=1
+                     /product="ORFV2"
+                     /protein_id="AKC88561.1"
+                     /translation="MGGSRSVSCSAFVIVIPTKCQSKAATWSLRQRRSSSRATPTRTI
+                     GITKRSAICKHCSDVSTSGSFGMCSGLLMLPMLLRSTPSTIEGFSSPRFHRAERGARR
+                     EAAHATPQRGCYAELAMPRTPKVAPLRCQVGRRPTMAKHGDRPCLAPPKLPRYGRRSA
+                     EGRPSTPNLEEKSGLGVRVREGTPGLRIASSINTLLRFKVCETHLSELDINGHFHLIH
+                     VVIRRGFREAERQAVMIDPCSRGLVGGFSPSP"
+     polyA_site      1220
+                     /gene="ORFV2"
+     gene            complement(1233..1967)
+                     /gene="cap"
+     CDS             complement(1233..1967)
+                     /gene="cap"
+                     /codon_start=1
+                     /product="capsid protein"
+                     /protein_id="AKC88563.1"
+                     /translation="MEPLPYQARARQWRRRRHFRHRRRHWRRRRRLPANRRGHRTNRI
+                     YRLRLVRQYQQILTKAEKTTNMTFGTDGVTILLKDFIMDERVLPFEDYRIRLAKVEAT
+                     PRNEDWAHWQGMGHTVPIQDSHLGDFFKKTKLQTDPLANWDGARKFNLRKGFKRLFRP
+                     KPQLSITDTDAANTPAAMWLNNPRSAWIPLRRRGETTYQTSGTRVNHYGLAFSFPEPT
+                     PNDYVYQMKVTIYVEFRQMSLTHLES"
+     polyA_site      complement(1234)
+                     /gene="cap"
+     gene            complement(1289..1720)
+                     /gene="ORFC2"
+     CDS             complement(1289..1720)
+                     /gene="ORFC2"
+                     /codon_start=1
+                     /product="ORFC2"
+                     /protein_id="AKC88562.1"
+                     /translation="MNAYCPLRTTAFVWPKSKPPPAMRTGHTGRGWATPSPSRTHTSG
+                     TSSRRPSCRPTPWPIGTGRGSSTSARASSASSDPSHSCPLRTLTRLTRRPLCGSTTPV
+                     RHGSRYGDGEKPPTKPLEHGSIITAWRSASLNPRLMTTCIK"
+ORIGIN      
+        1 accggcgact tggaaccctg gaaccaccat gccgaaacaa gcgcgctcaa gcccttgcaa
+       61 gcggtgggtc tttacgctga acaacccgac tgagcaagaa gttgaaagcg tgaaaagtct
+      121 gcctccgagt gagtaccact atgcgatagt cgggaaagag aaaggagagc aagggacacc
+      181 gcatttgcag ggcttcctgc atttgaaaaa gaaggttcga ctgaaccaaa tgaagcagtt
+      241 gataccgcgc gcgcatttcg agatcgcccg gggttccgat gaggataatg agcagtattg
+      301 cagcaaagaa ggggacgtga tacttaccat tggggccccc gcaaaaggca atcggagtga
+      361 ccttgccgga gctgttgccg ccgtgaaagc cggaagacca atgacggaag tcgcgcgaga
+      421 gttcagtgaa gcctacgtca agtgggggcg tggcctgaag gatctggcac tgatgattgg
+      481 ccagaagccc cgtgacttca agacggaggt gattgtgttg accggcccct cgggggtggg
+      541 gaagagccgc tgggccaatg aacaggaagg tacgaaatac tacaagatga agggtgattg
+      601 gtgggacgga tattcaaacg aagacatcgt ggtgattgac gacttctatg ggtggatccc
+      661 gttctgtgag ctgctccgcc tttgtgatcg ttatccccac aaagtgccag tcaaaggcag
+      721 ctacgtggag tttacgtcaa agaagatcat catcacgagc aacacccacc cgaaccattg
+      781 gtataacgaa gagaagtgct atatgcaagc actgttcaga cgtatcaaca agtggctctt
+      841 ttgggatgtg ttcgggtttg ttgatgctcc cgatgctgtt aagaagtacc ccatcaacta
+      901 ttgaagggtt ctccagccca cgatttcacc gcgcggagcg cggtgcccgc cgcgaagcgg
+      961 cccatgccac cccccagcga ggttgctacg ccgagttggc catgcctcgc acccccaaag
+     1021 ttgccccgtt aaggtgccag gtcggccgaa ggccgaccat ggcaaaacat ggtgatcggc
+     1081 catgccttgc tcccccaaag ttgccccgtt atggtcgaag gtcggccgaa ggccgaccga
+     1141 gcacacccaa tctcgaggaa aagagcggac tcggagttag ggttagggaa gggaccccgg
+     1201 gtttgcggat cgcttcctca ataaacactt tattaagatt caaggtgtgt gagactcatt
+     1261 tgtctgaact cgacataaat ggtcactttc atttgataca cgtagtcatt aggcgtgggt
+     1321 tcagggaagc tgaacgccag gccgtaatga ttgacccgtg ttccagaggt ttggtaggtg
+     1381 gtttctcccc gtctccgtag cgggatccat gccgaacggg ggttgttgag ccacatagcg
+     1441 gccggcgtgt tagccgcgtc agtgtccgta atggacagct gtggcttggg tcggaagagg
+     1501 cgcttgaagc ccttgcggag gttgaacttc cgcgccccgt cccaattggc cagggggtcg
+     1561 gtctgcagct tggtcttctt gaagaagtcc ccgaggtgtg agtcctggat ggggacggtg
+     1621 tggcccatcc cctgccagtg tgcccagtcc tcattgcggg gggtggcttc gactttggcc
+     1681 agacgaatgc ggtagtcctc aaagggcagt acgcgttcat ccatgatgaa gtccttgagg
+     1741 aggatggtga cgccgtctgt gccaaaggtc atattggtcg tcttctccgc tttcgtcaga
+     1801 atctgctggt attgcctgac gagccttaat cggtagatgc ggttggtccg gtgaccacgc
+     1861 ctgttggctg gcagccgtct ccgcctgcgc cagtgacgtc tgcggtgacg aaaatggcgt
+     1921 ctccgcctcc actgacgtgc ccgagcctga taaggaagcg gttccaagtc gccgttagta
+     1981 tt
+//
+
