@@ -237,9 +237,7 @@ process combineAnnotations {
   at 0% memory usage and just fill the work/ folder with massive (>100GB) files otherwise
   */
   """
-  cat *.gff > tmp.g
-  HEADER=\$(head -n1 tmp.g)
-  (echo \${HEADER} ; grep -v "^\${HEADER}" tmp.g ) > all_annotations.gff
+  strip_headers.sh *.gff > all_annotations.gff
   """
 }
 
@@ -255,9 +253,7 @@ process combineResults {
 
   // strip the headers and place a single csv header in the final file.
   """
-  cat *.csv > tmp.c
-  HEADER=\$(head -n1 tmp.c)
-  (echo \${HEADER} ; grep -v "^\${HEADER}" tmp.c ) > all_results.csv
+  strip_headers.sh *.csv > all_results.csv
   """
 }
 
