@@ -5,9 +5,14 @@
 # every line with the same header in the concatenated file.
 # Everything gets printed to standard output
 
+# set up temp file
 tempfile=$(mktemp /tmp/strip_headers.XXXXXX)
-exec 3>"$tempfile"
-rm "$tempfile"
+function finish {
+    [ -e $tempfile ] && rm $tempfile
+    exit
+}
+# on some error codes, delete the temp file
+trap finish EXIT
 
 cat $@ > $tempfile && \
 HEADER=$(head -n1 $tempfile) && \

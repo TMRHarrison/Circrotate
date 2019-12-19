@@ -7,7 +7,7 @@ def helpMessage() {
   log.info"\n"+"""
   Circ${c_dim}ovirus${c_reset}
   Rotate
-  v1.1.0
+  v1.1.1
 
   Usage:
 
