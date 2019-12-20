@@ -308,6 +308,10 @@ def main():
                 # add some information to the ID so it doesn't get lost
                 out_rec.id += "|rotated_to="+str(shift_offset+1)+"|"
 
+                # not if the sequence is reverse complemented
+                if rcomp:
+                    out_rec.id += "reverse_comp=true|"
+
                 # put the successful record into the table to get printed out later
                 rec_succ.append(
                     {
